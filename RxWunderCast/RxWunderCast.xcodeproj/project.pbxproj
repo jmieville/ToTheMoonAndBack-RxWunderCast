@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38FFF6D5E14D8897F1D2878A /* Pods_RxWunderCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 227CC09C5631EDAE41425D45 /* Pods_RxWunderCast.framework */; };
 		4999AF781EA28CC000DC0E27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999AF771EA28CC000DC0E27 /* AppDelegate.swift */; };
 		4999AF7A1EA28CC000DC0E27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999AF791EA28CC000DC0E27 /* ViewController.swift */; };
 		4999AF7D1EA28CC000DC0E27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4999AF7B1EA28CC000DC0E27 /* Main.storyboard */; };
 		4999AF7F1EA28CC000DC0E27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4999AF7E1EA28CC000DC0E27 /* Assets.xcassets */; };
 		4999AF821EA28CC000DC0E27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4999AF801EA28CC000DC0E27 /* LaunchScreen.storyboard */; };
 		4999AF8D1EA28CC000DC0E27 /* RxWunderCastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999AF8C1EA28CC000DC0E27 /* RxWunderCastTests.swift */; };
+		4999AF9C1EA2913000DC0E27 /* weather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4999AF9A1EA2913000DC0E27 /* weather.ttf */; };
+		4999AF9D1EA2913000DC0E27 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4999AF9B1EA2913000DC0E27 /* LICENSE */; };
+		4999AF9F1EA2916A00DC0E27 /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999AF9E1EA2916A00DC0E27 /* ApiController.swift */; };
+		4999AFA11EA2918900DC0E27 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999AFA01EA2918900DC0E27 /* Appearance.swift */; };
+		4999AFA31EA2919A00DC0E27 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999AFA21EA2919A00DC0E27 /* Colors.swift */; };
+		90A66B6ED4C0FB71DA3D163B /* Pods_RxWunderCastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE488763E2A190A7ACE90D3 /* Pods_RxWunderCastTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +33,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		227CC09C5631EDAE41425D45 /* Pods_RxWunderCast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxWunderCast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E9FC8345AF73AB52A557684 /* Pods-RxWunderCast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxWunderCast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxWunderCast/Pods-RxWunderCast.debug.xcconfig"; sourceTree = "<group>"; };
+		3128A819AD8677814605DA6A /* Pods-RxWunderCast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxWunderCast.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxWunderCast/Pods-RxWunderCast.release.xcconfig"; sourceTree = "<group>"; };
 		4999AF741EA28CC000DC0E27 /* RxWunderCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxWunderCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4999AF771EA28CC000DC0E27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4999AF791EA28CC000DC0E27 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +46,14 @@
 		4999AF881EA28CC000DC0E27 /* RxWunderCastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxWunderCastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4999AF8C1EA28CC000DC0E27 /* RxWunderCastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxWunderCastTests.swift; sourceTree = "<group>"; };
 		4999AF8E1EA28CC000DC0E27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4999AF9A1EA2913000DC0E27 /* weather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = weather.ttf; path = "../../../../SwiftBooks/RxSwift/RxSwift_v1.0/12-beginning-rxcocoa/starter/Wundercast/Assets/weather.ttf"; sourceTree = "<group>"; };
+		4999AF9B1EA2913000DC0E27 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = "../../../../SwiftBooks/RxSwift/RxSwift_v1.0/12-beginning-rxcocoa/starter/Wundercast/Assets/LICENSE"; sourceTree = "<group>"; };
+		4999AF9E1EA2916A00DC0E27 /* ApiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiController.swift; sourceTree = "<group>"; };
+		4999AFA01EA2918900DC0E27 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		4999AFA21EA2919A00DC0E27 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		65FE91984DC8DCC90646E7DC /* Pods-RxWunderCastTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxWunderCastTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxWunderCastTests/Pods-RxWunderCastTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7F19C8ED6A36636CC8FDD589 /* Pods-RxWunderCastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxWunderCastTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxWunderCastTests/Pods-RxWunderCastTests.release.xcconfig"; sourceTree = "<group>"; };
+		AAE488763E2A190A7ACE90D3 /* Pods_RxWunderCastTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxWunderCastTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38FFF6D5E14D8897F1D2878A /* Pods_RxWunderCast.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90A66B6ED4C0FB71DA3D163B /* Pods_RxWunderCastTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +82,8 @@
 				4999AF761EA28CC000DC0E27 /* RxWunderCast */,
 				4999AF8B1EA28CC000DC0E27 /* RxWunderCastTests */,
 				4999AF751EA28CC000DC0E27 /* Products */,
+				68B1F8E7D0DD85B1EDA5720D /* Pods */,
+				79AD0FEA69803C1579F4A6C4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +99,9 @@
 		4999AF761EA28CC000DC0E27 /* RxWunderCast */ = {
 			isa = PBXGroup;
 			children = (
+				4999AF991EA2910900DC0E27 /* Utils */,
+				4999AF981EA2910300DC0E27 /* Assets */,
+				4999AF971EA290FB00DC0E27 /* Controller */,
 				4999AF771EA28CC000DC0E27 /* AppDelegate.swift */,
 				4999AF791EA28CC000DC0E27 /* ViewController.swift */,
 				4999AF7B1EA28CC000DC0E27 /* Main.storyboard */,
@@ -96,6 +121,52 @@
 			path = RxWunderCastTests;
 			sourceTree = "<group>";
 		};
+		4999AF971EA290FB00DC0E27 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4999AF9E1EA2916A00DC0E27 /* ApiController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		4999AF981EA2910300DC0E27 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				4999AF9A1EA2913000DC0E27 /* weather.ttf */,
+				4999AF9B1EA2913000DC0E27 /* LICENSE */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		4999AF991EA2910900DC0E27 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4999AFA01EA2918900DC0E27 /* Appearance.swift */,
+				4999AFA21EA2919A00DC0E27 /* Colors.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		68B1F8E7D0DD85B1EDA5720D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2E9FC8345AF73AB52A557684 /* Pods-RxWunderCast.debug.xcconfig */,
+				3128A819AD8677814605DA6A /* Pods-RxWunderCast.release.xcconfig */,
+				65FE91984DC8DCC90646E7DC /* Pods-RxWunderCastTests.debug.xcconfig */,
+				7F19C8ED6A36636CC8FDD589 /* Pods-RxWunderCastTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		79AD0FEA69803C1579F4A6C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				227CC09C5631EDAE41425D45 /* Pods_RxWunderCast.framework */,
+				AAE488763E2A190A7ACE90D3 /* Pods_RxWunderCastTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +174,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4999AF911EA28CC000DC0E27 /* Build configuration list for PBXNativeTarget "RxWunderCast" */;
 			buildPhases = (
+				EE494B3099BE7B1F22AA8B05 /* [CP] Check Pods Manifest.lock */,
 				4999AF701EA28CC000DC0E27 /* Sources */,
 				4999AF711EA28CC000DC0E27 /* Frameworks */,
 				4999AF721EA28CC000DC0E27 /* Resources */,
+				CCD0D6F27E4E5F143049A476 /* [CP] Embed Pods Frameworks */,
+				91FBA49FE7016EE53A663DEE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -120,9 +194,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4999AF941EA28CC000DC0E27 /* Build configuration list for PBXNativeTarget "RxWunderCastTests" */;
 			buildPhases = (
+				77AE93DFBFFDC29F8D342A75 /* [CP] Check Pods Manifest.lock */,
 				4999AF841EA28CC000DC0E27 /* Sources */,
 				4999AF851EA28CC000DC0E27 /* Frameworks */,
 				4999AF861EA28CC000DC0E27 /* Resources */,
+				E19F7661678AE6F0ADC26CD4 /* [CP] Embed Pods Frameworks */,
+				695C288337A912BE6391015F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -184,6 +261,8 @@
 				4999AF821EA28CC000DC0E27 /* LaunchScreen.storyboard in Resources */,
 				4999AF7F1EA28CC000DC0E27 /* Assets.xcassets in Resources */,
 				4999AF7D1EA28CC000DC0E27 /* Main.storyboard in Resources */,
+				4999AF9C1EA2913000DC0E27 /* weather.ttf in Resources */,
+				4999AF9D1EA2913000DC0E27 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,13 +275,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		695C288337A912BE6391015F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxWunderCastTests/Pods-RxWunderCastTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		77AE93DFBFFDC29F8D342A75 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		91FBA49FE7016EE53A663DEE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxWunderCast/Pods-RxWunderCast-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CCD0D6F27E4E5F143049A476 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxWunderCast/Pods-RxWunderCast-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E19F7661678AE6F0ADC26CD4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxWunderCastTests/Pods-RxWunderCastTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE494B3099BE7B1F22AA8B05 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4999AF701EA28CC000DC0E27 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4999AF7A1EA28CC000DC0E27 /* ViewController.swift in Sources */,
+				4999AFA31EA2919A00DC0E27 /* Colors.swift in Sources */,
 				4999AF781EA28CC000DC0E27 /* AppDelegate.swift in Sources */,
+				4999AF9F1EA2916A00DC0E27 /* ApiController.swift in Sources */,
+				4999AFA11EA2918900DC0E27 /* Appearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +421,7 @@
 /* Begin XCBuildConfiguration section */
 		4999AF8F1EA28CC000DC0E27 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E9FC8345AF73AB52A557684 /* Pods-RxWunderCast.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -339,6 +515,7 @@
 		};
 		4999AF921EA28CC000DC0E27 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E9FC8345AF73AB52A557684 /* Pods-RxWunderCast.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8GL695U4E9;
@@ -352,6 +529,7 @@
 		};
 		4999AF931EA28CC000DC0E27 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3128A819AD8677814605DA6A /* Pods-RxWunderCast.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8GL695U4E9;
@@ -365,6 +543,7 @@
 		};
 		4999AF951EA28CC000DC0E27 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65FE91984DC8DCC90646E7DC /* Pods-RxWunderCastTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -380,6 +559,7 @@
 		};
 		4999AF961EA28CC000DC0E27 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F19C8ED6A36636CC8FDD589 /* Pods-RxWunderCastTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -412,6 +592,7 @@
 				4999AF931EA28CC000DC0E27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4999AF941EA28CC000DC0E27 /* Build configuration list for PBXNativeTarget "RxWunderCastTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +601,7 @@
 				4999AF961EA28CC000DC0E27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

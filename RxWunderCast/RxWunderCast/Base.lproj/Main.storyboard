@@ -1,26 +1,101 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nDa-1u-Pj5">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="weather.ttf">
+            <string>Flaticon</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="M1G-KN-wqD">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nDa-1u-Pj5" customClass="ViewController" customModule="RxWunderCast" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="6jF-Fv-E5M"/>
+                        <viewControllerLayoutGuide type="bottom" id="MN0-dS-IM0"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="htV-9D-7V7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City's Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gZR-M9-8v2">
+                                <rect key="frame" x="16" y="36" width="343" height="39"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                        <color key="value" white="0.90175731510000001" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lre-my-dkx">
+                                <rect key="frame" x="32" y="198" width="311" height="311"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lre-my-dkx" secondAttribute="height" multiplier="1:1" id="NPx-Zd-Hgz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Flaticon" family="Flaticon" pointSize="220"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5M-q7-hbr">
+                                <rect key="frame" x="32" y="161" width="15" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94f-4K-Ggd">
+                                <rect key="frame" x="325.5" y="161" width="17.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gc9-Ut-Hu8">
+                                <rect key="frame" x="32" y="517" width="311" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="gZR-M9-8v2" secondAttribute="trailing" id="2e9-oa-gP0"/>
+                            <constraint firstItem="lre-my-dkx" firstAttribute="centerY" secondItem="htV-9D-7V7" secondAttribute="centerY" constant="20" id="3F6-zl-qFV"/>
+                            <constraint firstItem="gc9-Ut-Hu8" firstAttribute="top" secondItem="lre-my-dkx" secondAttribute="bottom" constant="8" id="7Sy-Xm-8Ya"/>
+                            <constraint firstItem="gZR-M9-8v2" firstAttribute="leading" secondItem="htV-9D-7V7" secondAttribute="leadingMargin" id="Ihw-eQ-FjS"/>
+                            <constraint firstItem="gZR-M9-8v2" firstAttribute="top" secondItem="6jF-Fv-E5M" secondAttribute="bottom" constant="16" id="KG7-pc-O3E"/>
+                            <constraint firstItem="lre-my-dkx" firstAttribute="centerX" secondItem="htV-9D-7V7" secondAttribute="centerX" id="PbE-mW-HPS"/>
+                            <constraint firstItem="lre-my-dkx" firstAttribute="top" secondItem="94f-4K-Ggd" secondAttribute="bottom" constant="8" id="U8c-XR-83f"/>
+                            <constraint firstItem="lre-my-dkx" firstAttribute="top" secondItem="C5M-q7-hbr" secondAttribute="bottom" constant="8" id="Z8l-w2-czs"/>
+                            <constraint firstItem="94f-4K-Ggd" firstAttribute="trailing" secondItem="lre-my-dkx" secondAttribute="trailing" id="aAV-Qi-qp0"/>
+                            <constraint firstItem="gc9-Ut-Hu8" firstAttribute="width" secondItem="lre-my-dkx" secondAttribute="width" id="dAj-vW-zpJ"/>
+                            <constraint firstItem="lre-my-dkx" firstAttribute="leading" secondItem="htV-9D-7V7" secondAttribute="leading" constant="32" id="dpt-kk-8Pn"/>
+                            <constraint firstItem="gc9-Ut-Hu8" firstAttribute="centerX" secondItem="lre-my-dkx" secondAttribute="centerX" id="q0S-9E-6jy"/>
+                            <constraint firstItem="C5M-q7-hbr" firstAttribute="leading" secondItem="lre-my-dkx" secondAttribute="leading" id="rX6-TV-vBY"/>
+                            <constraint firstAttribute="trailing" secondItem="lre-my-dkx" secondAttribute="trailing" constant="32" id="u5B-QS-HHY"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cityNameLabel" destination="gc9-Ut-Hu8" id="i6e-4w-ziq"/>
+                        <outlet property="humidityLabel" destination="94f-4K-Ggd" id="qQK-9N-4AS"/>
+                        <outlet property="iconLabel" destination="lre-my-dkx" id="sYu-7t-xnf"/>
+                        <outlet property="searchCityName" destination="gZR-M9-8v2" id="4cx-Si-rFt"/>
+                        <outlet property="tempLabel" destination="C5M-q7-hbr" id="Sg8-cP-oto"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ulM-KV-WZB" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="146" y="183"/>
         </scene>
     </scenes>
 </document>
