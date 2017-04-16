@@ -23,7 +23,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         style()
-        
+        ApiController.shared.currentWeather(city: "RxSwift")
+        .observeOn(MainScheduler.instance)
+        .subscribe(onNext: { data in
+            self.tempLabel.text = "\(data.temperature)° C"
+            self.iconLabel.text = data.icon
+            self.humidityLabel.text = "\(data.humidity)%"
+            self.cityNameLabel.text = data.cityName
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
