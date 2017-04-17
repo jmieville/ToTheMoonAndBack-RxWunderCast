@@ -57,8 +57,6 @@ class ViewController: UIViewController {
                 .catchErrorJustReturn(ApiController.Weather.dummy)
         }
         
-
-        
         let searchInput = searchCityName.rx.controlEvent(.editingDidEndOnExit).asObservable()
             .map { self.searchCityName.text }
             .filter { ($0 ?? "").characters.count > 0 }
@@ -71,17 +69,19 @@ class ViewController: UIViewController {
         let search = Observable.from([geoSearch, textSearch])
             .merge()
             .asDriver(onErrorJustReturn: ApiController.Weather.dummy)
+        
         let running = Observable.from([
             searchInput.map { _ in true },
+            geoInput.map { _ in true },
             search.map { _ in false }.asObservable()
             ])
-        .merge()
-        .startWith(true)
+            .merge()
+            .startWith(true)
             .asDriver(onErrorJustReturn: false)
         running
-        .skip(1)
-        .drive(activityIndicator.rx.isAnimating)
-        .addDisposableTo(disposeBag)
+            .skip(1)
+            .drive(activityIndicator.rx.isAnimating)
+            .addDisposableTo(disposeBag)
         
         running
             .drive(tempLabel.rx.isHidden)
