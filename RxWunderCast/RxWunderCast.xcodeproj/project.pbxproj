@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		38FFF6D5E14D8897F1D2878A /* Pods_RxWunderCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 227CC09C5631EDAE41425D45 /* Pods_RxWunderCast.framework */; };
+		4994891D1EA4ADC900DF199E /* MKMapView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4994891C1EA4ADC900DF199E /* MKMapView+Rx.swift */; };
+		499489201EA4B62C00DF199E /* CLLocationManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4994891F1EA4B62C00DF199E /* CLLocationManager+Rx.swift */; };
 		4999AF781EA28CC000DC0E27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999AF771EA28CC000DC0E27 /* AppDelegate.swift */; };
 		4999AF7A1EA28CC000DC0E27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999AF791EA28CC000DC0E27 /* ViewController.swift */; };
 		4999AF7D1EA28CC000DC0E27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4999AF7B1EA28CC000DC0E27 /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 		227CC09C5631EDAE41425D45 /* Pods_RxWunderCast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxWunderCast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E9FC8345AF73AB52A557684 /* Pods-RxWunderCast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxWunderCast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxWunderCast/Pods-RxWunderCast.debug.xcconfig"; sourceTree = "<group>"; };
 		3128A819AD8677814605DA6A /* Pods-RxWunderCast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxWunderCast.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxWunderCast/Pods-RxWunderCast.release.xcconfig"; sourceTree = "<group>"; };
+		4994891C1EA4ADC900DF199E /* MKMapView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKMapView+Rx.swift"; sourceTree = "<group>"; };
+		4994891F1EA4B62C00DF199E /* CLLocationManager+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift"; sourceTree = "<group>"; };
 		4999AF741EA28CC000DC0E27 /* RxWunderCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxWunderCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4999AF771EA28CC000DC0E27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4999AF791EA28CC000DC0E27 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +82,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4994891E1EA4ADD000DF199E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4994891C1EA4ADC900DF199E /* MKMapView+Rx.swift */,
+				4994891F1EA4B62C00DF199E /* CLLocationManager+Rx.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		4999AF6B1EA28CC000DC0E27 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +114,7 @@
 		4999AF761EA28CC000DC0E27 /* RxWunderCast */ = {
 			isa = PBXGroup;
 			children = (
+				4994891E1EA4ADD000DF199E /* Extensions */,
 				4999AF991EA2910900DC0E27 /* Utils */,
 				4999AF981EA2910300DC0E27 /* Assets */,
 				4999AF971EA290FB00DC0E27 /* Controller */,
@@ -381,7 +395,9 @@
 				4999AF781EA28CC000DC0E27 /* AppDelegate.swift in Sources */,
 				4999AF9F1EA2916A00DC0E27 /* ApiController.swift in Sources */,
 				4999AFA11EA2918900DC0E27 /* Appearance.swift in Sources */,
+				499489201EA4B62C00DF199E /* CLLocationManager+Rx.swift in Sources */,
 				4999AFA51EA2AB9100DC0E27 /* Constant.swift in Sources */,
+				4994891D1EA4ADC900DF199E /* MKMapView+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

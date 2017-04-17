@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import MapKit
 
 class ViewController: UIViewController {
     
@@ -18,6 +19,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var iconLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var tempSwitch: UISwitch!
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var geoLocationButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
 
     
     
