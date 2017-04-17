@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import MapKit
+import CoreLocation
 
 class ViewController: UIViewController {
     
@@ -24,37 +25,76 @@ class ViewController: UIViewController {
     @IBOutlet weak var geoLocationButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
-
-    
-    
     let disposeBag = DisposeBag()
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        let textSearch = searchCityName.rx.controlEvent(.editingDidEndOnExit).asObservable()
+        style()
+
         let temperature = tempSwitch.rx.controlEvent(.valueChanged).asObservable()
         
-        style()
-        //        ApiController.shared.currentWeather(city: "RxSwift")
-        //            .observeOn(MainScheduler.instance)
-        //            .subscribe(onNext: { data in
-        //                self.tempLabel.text = "\(data.temperature)° C"
-        //                self.iconLabel.text = data.icon
-        //                self.humidityLabel.text = "\(data.humidity)%"
-        //                self.cityNameLabel.text = data.cityName
-        //            })
-        //            .addDisposableTo(disposeBag)
+        let currentLocation = locationManager.rx.didUpdateLocations
+            .map { locations in
+                return locations[0]
+            }
+            .filter { location in
+                return location.horizontalAccuracy < kCLLocationAccuracyHundredMeters
+        }
         
-        let search = Observable.from([textSearch, temperature])
-            .merge()
+        let geoInput = geoLocationButton.rx.tap.asObservable()
+            .do(onNext: {
+                self.locationManager.requestWhenInUseAuthorization()
+                self.locationManager.startUpdatingLocation()
+            })
+        let geoLocation = geoInput.flatMap {
+            return currentLocation.take(1)
+        }
+        
+        let geoSearch = geoLocation.flatMap { location in
+            return ApiController.shared.currentWeather(lat:
+                location.coordinate.latitude, lon: location.coordinate.longitude)
+                .catchErrorJustReturn(ApiController.Weather.dummy)
+        }
+        
+
+        
+        let searchInput = searchCityName.rx.controlEvent(.editingDidEndOnExit).asObservable()
             .map { self.searchCityName.text }
             .filter { ($0 ?? "").characters.count > 0 }
-            .flatMap { text in
-                return ApiController.shared.currentWeather(city: text ?? "Error")
-                    .catchErrorJustReturn(ApiController.Weather.empty)
-            }
-            .asDriver(onErrorJustReturn: ApiController.Weather.empty)
         
+        let textSearch = searchInput.flatMap { text in
+            return ApiController.shared.currentWeather(city: text ?? "Error")
+                .catchErrorJustReturn(ApiController.Weather.dummy)
+        }
+        
+        let search = Observable.from([geoSearch, textSearch])
+            .merge()
+            .asDriver(onErrorJustReturn: ApiController.Weather.dummy)
+        let running = Observable.from([
+            searchInput.map { _ in true },
+            search.map { _ in false }.asObservable()
+            ])
+        .merge()
+        .startWith(true)
+            .asDriver(onErrorJustReturn: false)
+        running
+        .skip(1)
+        .drive(activityIndicator.rx.isAnimating)
+        .addDisposableTo(disposeBag)
+        
+        running
+            .drive(tempLabel.rx.isHidden)
+            .addDisposableTo(disposeBag)
+        running
+            .drive(iconLabel.rx.isHidden)
+            .addDisposableTo(disposeBag)
+        running
+            .drive(humidityLabel.rx.isHidden)
+            .addDisposableTo(disposeBag)
+        running
+            .drive(cityNameLabel.rx.isHidden)
+            .addDisposableTo(disposeBag)
         
         search.map { w in
             if self.tempSwitch.isOn {
