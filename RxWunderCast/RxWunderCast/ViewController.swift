@@ -17,32 +17,46 @@ class ViewController: UIViewController {
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var iconLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var tempSwitch: UISwitch!
+
     
     
     let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let textSearch = searchCityName.rx.controlEvent(.editingDidEndOnExit).asObservable()
+        let temperature = tempSwitch.rx.controlEvent(.valueChanged).asObservable()
         
         style()
-        ApiController.shared.currentWeather(city: "RxSwift")
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { data in
-                self.tempLabel.text = "\(data.temperature)° C"
-                self.iconLabel.text = data.icon
-                self.humidityLabel.text = "\(data.humidity)%"
-                self.cityNameLabel.text = data.cityName
-            })
-            .addDisposableTo(disposeBag)
+        //        ApiController.shared.currentWeather(city: "RxSwift")
+        //            .observeOn(MainScheduler.instance)
+        //            .subscribe(onNext: { data in
+        //                self.tempLabel.text = "\(data.temperature)° C"
+        //                self.iconLabel.text = data.icon
+        //                self.humidityLabel.text = "\(data.humidity)%"
+        //                self.cityNameLabel.text = data.cityName
+        //            })
+        //            .addDisposableTo(disposeBag)
         
-        let search = searchCityName.rx.text
+        let search = Observable.from([textSearch, temperature])
+            .merge()
+            .map { self.searchCityName.text }
             .filter { ($0 ?? "").characters.count > 0 }
-            .flatMapLatest { text in
+            .flatMap { text in
                 return ApiController.shared.currentWeather(city: text ?? "Error")
                     .catchErrorJustReturn(ApiController.Weather.empty)
             }
             .asDriver(onErrorJustReturn: ApiController.Weather.empty)
-        search.map { "\($0.temperature)° C" }
+        
+        
+        search.map { w in
+            if self.tempSwitch.isOn {
+                return "\(Int(Double(w.temperature) * 1.8 + 32))° F"
+            } else {
+                return "\(w.temperature)° C"
+            }
+            }
             .drive(tempLabel.rx.text)
             .addDisposableTo(disposeBag)
         search.map { $0.icon }

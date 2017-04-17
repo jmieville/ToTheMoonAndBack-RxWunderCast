@@ -61,11 +61,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gc9-Ut-Hu8">
-                                <rect key="frame" x="32" y="517" width="311" height="39"/>
+                                <rect key="frame" x="32" y="517" width="311" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sZh-f2-Owf">
+                                <rect key="frame" x="144.5" y="616" width="86.5" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJo-oV-B9s">
+                                        <rect key="frame" x="0.0" y="0.0" width="12" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ED3-7z-L6D">
+                                        <rect key="frame" x="20" y="0.0" width="51" height="31"/>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1c-i2-qU3">
+                                        <rect key="frame" x="77" y="0.0" width="9.5" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -75,11 +95,13 @@
                             <constraint firstItem="gZR-M9-8v2" firstAttribute="leading" secondItem="htV-9D-7V7" secondAttribute="leadingMargin" id="Ihw-eQ-FjS"/>
                             <constraint firstItem="gZR-M9-8v2" firstAttribute="top" secondItem="6jF-Fv-E5M" secondAttribute="bottom" constant="16" id="KG7-pc-O3E"/>
                             <constraint firstItem="lre-my-dkx" firstAttribute="centerX" secondItem="htV-9D-7V7" secondAttribute="centerX" id="PbE-mW-HPS"/>
+                            <constraint firstItem="sZh-f2-Owf" firstAttribute="centerX" secondItem="htV-9D-7V7" secondAttribute="centerX" id="QXc-go-pgf"/>
                             <constraint firstItem="lre-my-dkx" firstAttribute="top" secondItem="94f-4K-Ggd" secondAttribute="bottom" constant="8" id="U8c-XR-83f"/>
                             <constraint firstItem="lre-my-dkx" firstAttribute="top" secondItem="C5M-q7-hbr" secondAttribute="bottom" constant="8" id="Z8l-w2-czs"/>
                             <constraint firstItem="94f-4K-Ggd" firstAttribute="trailing" secondItem="lre-my-dkx" secondAttribute="trailing" id="aAV-Qi-qp0"/>
                             <constraint firstItem="gc9-Ut-Hu8" firstAttribute="width" secondItem="lre-my-dkx" secondAttribute="width" id="dAj-vW-zpJ"/>
                             <constraint firstItem="lre-my-dkx" firstAttribute="leading" secondItem="htV-9D-7V7" secondAttribute="leading" constant="32" id="dpt-kk-8Pn"/>
+                            <constraint firstAttribute="bottom" secondItem="sZh-f2-Owf" secondAttribute="bottom" constant="20" symbolic="YES" id="fYQ-g7-mfZ"/>
                             <constraint firstItem="gc9-Ut-Hu8" firstAttribute="centerX" secondItem="lre-my-dkx" secondAttribute="centerX" id="q0S-9E-6jy"/>
                             <constraint firstItem="C5M-q7-hbr" firstAttribute="leading" secondItem="lre-my-dkx" secondAttribute="leading" id="rX6-TV-vBY"/>
                             <constraint firstAttribute="trailing" secondItem="lre-my-dkx" secondAttribute="trailing" constant="32" id="u5B-QS-HHY"/>
@@ -91,6 +113,7 @@
                         <outlet property="iconLabel" destination="lre-my-dkx" id="sYu-7t-xnf"/>
                         <outlet property="searchCityName" destination="gZR-M9-8v2" id="4cx-Si-rFt"/>
                         <outlet property="tempLabel" destination="C5M-q7-hbr" id="Sg8-cP-oto"/>
+                        <outlet property="tempSwitch" destination="ED3-7z-L6D" id="trF-Lo-HYK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ulM-KV-WZB" sceneMemberID="firstResponder"/>
