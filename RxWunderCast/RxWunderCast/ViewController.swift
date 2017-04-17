@@ -18,19 +18,34 @@ class ViewController: UIViewController {
     @IBOutlet weak var iconLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     
+    
+    let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         style()
         ApiController.shared.currentWeather(city: "RxSwift")
-        .observeOn(MainScheduler.instance)
-        .subscribe(onNext: { data in
-            self.tempLabel.text = "\(data.temperature)° C"
-            self.iconLabel.text = data.icon
-            self.humidityLabel.text = "\(data.humidity)%"
-            self.cityNameLabel.text = data.cityName
-        })
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { data in
+                self.tempLabel.text = "\(data.temperature)° C"
+                self.iconLabel.text = data.icon
+                self.humidityLabel.text = "\(data.humidity)%"
+                self.cityNameLabel.text = data.cityName
+            })
+            .addDisposableTo(disposeBag)
+        
+        let search = searchCityName.rx.text
+            .filter { ($0 ?? "").characters.count > 0 }
+            .flatMapLatest { text in
+                return ApiController.shared.currentWeather(city: text ?? "Error")
+                    .catchErrorJustReturn(ApiController.Weather.empty)
+            }
+            .observeOn(MainScheduler.instance)
+        search.map { "\($0.temperature)° C" }
+            .bindTo(tempLabel.rx.text)
+            .addDisposableTo(disposeBag)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
