@@ -41,9 +41,18 @@ class ViewController: UIViewController {
                 return ApiController.shared.currentWeather(city: text ?? "Error")
                     .catchErrorJustReturn(ApiController.Weather.empty)
             }
-            .observeOn(MainScheduler.instance)
+            .asDriver(onErrorJustReturn: ApiController.Weather.empty)
         search.map { "\($0.temperature)° C" }
-            .bindTo(tempLabel.rx.text)
+            .drive(tempLabel.rx.text)
+            .addDisposableTo(disposeBag)
+        search.map { $0.icon }
+            .drive(iconLabel.rx.text)
+            .addDisposableTo(disposeBag)
+        search.map { "\($0.humidity)%" }
+            .drive(humidityLabel.rx.text)
+            .addDisposableTo(disposeBag)
+        search.map { $0.cityName }
+            .drive(cityNameLabel.rx.text)
             .addDisposableTo(disposeBag)
         
     }
