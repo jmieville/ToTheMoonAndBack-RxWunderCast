@@ -48,4 +48,12 @@ extension Reactive where Base: MKMapView {
         }
         return ControlEvent(events: source)
     }
+    
+    // Added Span
+    public var location: UIBindingObserver<Base, CLLocationCoordinate2D> {
+        return UIBindingObserver(UIElement: self.base) { map, location in
+            let span = MKCoordinateSpan(latitudeDelta: 2, longitudeDelta: 2)
+            map.region = MKCoordinateRegion(center: location, span: span)
+        }
+    }
 }

@@ -32,7 +32,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         style()
         
-        
         let searchInput = searchCityName.rx.controlEvent(.editingDidEndOnExit).asObservable()
             .map { self.searchCityName.text }
             .filter { ($0 ?? "").characters.count > 0 }
@@ -42,11 +41,14 @@ class ViewController: UIViewController {
                 .catchErrorJustReturn(ApiController.Weather.dummy)
         }
         
-        mapButton.rx.tap
-            .subscribe(onNext: {
-                self.mapView.isHidden = !self.mapView.isHidden
-            })
-        .addDisposableTo(disposeBag)
+        let mapInput = mapView.rx.regionDidChangeAnimated
+            .skip(1)
+            .map { _ in self.mapView.centerCoordinate }
+        
+        let mapSearch = mapInput.flatMap { coordinate in
+            return ApiController.shared.currentWeather(lat: coordinate.latitude, lon: coordinate.longitude)
+                .catchErrorJustReturn(ApiController.Weather.dummy)
+        }
         
         let currentLocation = locationManager.rx.didUpdateLocations
             .map { locations in
@@ -68,15 +70,6 @@ class ViewController: UIViewController {
         let geoSearch = geoLocation.flatMap { location in
             return ApiController.shared.currentWeather(lat: location.coordinate.latitude, lon: location.coordinate.longitude)
                 .catchErrorJustReturn(ApiController.Weather.dummy)
-        }
-        
-        let mapInput = mapView.rx.regionDidChangeAnimated
-        .skip(1)
-            .map { _ in self.mapView.centerCoordinate }
-        
-        let mapSearch = mapInput.flatMap { coordinate in
-            return ApiController.shared.currentWeather(lat: coordinate.latitude, lon: coordinate.longitude)
-            .catchErrorJustReturn(ApiController.Weather.dummy)
         }
         
         let search = Observable.from([geoSearch, textSearch, mapSearch])
@@ -128,10 +121,36 @@ class ViewController: UIViewController {
             .drive(cityNameLabel.rx.text)
             .addDisposableTo(disposeBag)
         
+        locationManager.rx.didUpdateLocations
+            .subscribe(onNext: { locations in
+                print(locations)
+            })
+            .addDisposableTo(disposeBag)
+        
+        mapButton.rx.tap
+            .subscribe(onNext: {
+                self.mapView.isHidden = !self.mapView.isHidden
+            })
+            .addDisposableTo(disposeBag)
+        
         mapView.rx.setDelegate(self)
         .addDisposableTo(disposeBag)
         
         search.map { [$0.overlay()] }
+            .drive(mapView.rx.overlays)
+            .addDisposableTo(disposeBag)
+        
+        textSearch.asDriver(onErrorJustReturn: ApiController.Weather.dummy)
+            .map { $0.coordinate }
+            .drive(mapView.rx.location)
+            .addDisposableTo(disposeBag)
+        
+        mapInput.flatMap { coordinate in
+            return ApiController.shared.currentWeatherAround(lat: coordinate.latitude, lon: coordinate.longitude)
+                .catchErrorJustReturn([])
+            }
+            .asDriver(onErrorJustReturn:[])
+            .map { $0.map { $0.overlay() } }
             .drive(mapView.rx.overlays)
             .addDisposableTo(disposeBag)
     }
