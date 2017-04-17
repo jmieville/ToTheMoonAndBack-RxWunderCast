@@ -31,8 +31,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
-
-        let temperature = tempSwitch.rx.controlEvent(.valueChanged).asObservable()
+        
+        mapButton.rx.tap
+            .subscribe(onNext: {
+                self.mapView.isHidden = !self.mapView.isHidden
+            })
+        .addDisposableTo(disposeBag)
         
         let currentLocation = locationManager.rx.didUpdateLocations
             .map { locations in
@@ -66,13 +70,23 @@ class ViewController: UIViewController {
                 .catchErrorJustReturn(ApiController.Weather.dummy)
         }
         
-        let search = Observable.from([geoSearch, textSearch])
+        let mapInput = mapView.rx.regionDidChangeAnimated
+        .skip(1)
+            .map { _ in self.mapView.centerCoordinate }
+        
+        let mapSearch = mapInput.flatMap { coordinate in
+            return ApiController.shared.currentWeather(lat: coordinate.latitude, lon: coordinate.longitude)
+            .catchErrorJustReturn(ApiController.Weather.dummy)
+        }
+        
+        let search = Observable.from([geoSearch, textSearch, mapSearch])
             .merge()
             .asDriver(onErrorJustReturn: ApiController.Weather.dummy)
         
         let running = Observable.from([
             searchInput.map { _ in true },
             geoInput.map { _ in true },
+            mapInput.map { _ in true },
             search.map { _ in false }.asObservable()
             ])
             .merge()
@@ -99,9 +113,8 @@ class ViewController: UIViewController {
         search.map { w in
             if self.tempSwitch.isOn {
                 return "\(Int(Double(w.temperature) * 1.8 + 32))° F"
-            } else {
-                return "\(w.temperature)° C"
             }
+                return "\(w.temperature)° C"
             }
             .drive(tempLabel.rx.text)
             .addDisposableTo(disposeBag)
@@ -115,6 +128,12 @@ class ViewController: UIViewController {
             .drive(cityNameLabel.rx.text)
             .addDisposableTo(disposeBag)
         
+        mapView.rx.setDelegate(self)
+        .addDisposableTo(disposeBag)
+        
+        search.map { [$0.overlay()] }
+            .drive(mapView.rx.overlays)
+            .addDisposableTo(disposeBag)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -145,6 +164,18 @@ class ViewController: UIViewController {
         humidityLabel.textColor = UIColor.cream
         iconLabel.textColor = UIColor.cream
         cityNameLabel.textColor = UIColor.cream
+    }
+}
+
+extension ViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) ->
+        MKOverlayRenderer {
+            if let overlay = overlay as? ApiController.Weather.Overlay {
+                let overlayView = ApiController.Weather.OverlayView(overlay:
+                    overlay, overlayIcon: overlay.icon)
+                return overlayView
+            }
+            return MKOverlayRenderer()
     }
 }
 
