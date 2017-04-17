@@ -32,6 +32,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         style()
         
+        
+        let searchInput = searchCityName.rx.controlEvent(.editingDidEndOnExit).asObservable()
+            .map { self.searchCityName.text }
+            .filter { ($0 ?? "").characters.count > 0 }
+        
+        let textSearch = searchInput.flatMap { text in
+            return ApiController.shared.currentWeather(city: text ?? "Error")
+                .catchErrorJustReturn(ApiController.Weather.dummy)
+        }
+        
         mapButton.rx.tap
             .subscribe(onNext: {
                 self.mapView.isHidden = !self.mapView.isHidden
@@ -56,17 +66,7 @@ class ViewController: UIViewController {
         }
         
         let geoSearch = geoLocation.flatMap { location in
-            return ApiController.shared.currentWeather(lat:
-                location.coordinate.latitude, lon: location.coordinate.longitude)
-                .catchErrorJustReturn(ApiController.Weather.dummy)
-        }
-        
-        let searchInput = searchCityName.rx.controlEvent(.editingDidEndOnExit).asObservable()
-            .map { self.searchCityName.text }
-            .filter { ($0 ?? "").characters.count > 0 }
-        
-        let textSearch = searchInput.flatMap { text in
-            return ApiController.shared.currentWeather(city: text ?? "Error")
+            return ApiController.shared.currentWeather(lat: location.coordinate.latitude, lon: location.coordinate.longitude)
                 .catchErrorJustReturn(ApiController.Weather.dummy)
         }
         
